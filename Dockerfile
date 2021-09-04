@@ -1,6 +1,8 @@
-FROM python:3.9.6-slim-buster
+FROM python:3.9.6-alpine3.14
 
 WORKDIR /app
+
+RUN apk update && apk add gcc musl-dev
 
 COPY requirements.txt .
 
