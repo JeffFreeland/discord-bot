@@ -1,5 +1,9 @@
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
+const log4js = require("log4js");
+
+var logger = log4js.getLogger();
+logger.level = "info";
 
 function main() {
     // Create a new client instance
@@ -7,7 +11,7 @@ function main() {
 
     // When the client is ready, run this code (only once)
     client.once('ready', () => {
-        console.log('Ready!');
+        logger.info('Bot is ready!');
     });
 
     client.on('interactionCreate', async interaction => {
@@ -24,8 +28,11 @@ function main() {
         }
     });
 
-    // Login to Discord with your client's token
-    client.login(process.env.TOKEN);
+    const TOKEN = process.env.TOKEN;
+    if(!TOKEN){
+        logger.warn("No token found in environment!");
+    }
+    client.login(TOKEN);
 }
 
 main();
