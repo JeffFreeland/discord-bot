@@ -1,21 +1,9 @@
 const fs = require("fs");
 
 module.exports = {
-    getCommandsFromDirAsJson,
-    getCommandsFromDir
+    getCommandsFromDir,
+    getCommandsFromDirAsJson
 };
-
-function getCommandsFromDirAsJson() {
-    const commands = []
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-	for (const file of commandFiles) {
-		const command = require(`./commands/${file}`);
-		commands.push(command.data.toJSON());
-	}
-
-    return commands;
-}
 
 function getCommandsFromDir() {
     const commands = [];
@@ -24,6 +12,12 @@ function getCommandsFromDir() {
         const command = require(`./commands/${file}`);
         commands.push(command);
     }
-
     return commands;
 }
+
+function getCommandsFromDirAsJson() {
+    const commands = getCommandsFromDir();
+    const commandsAsJSON = commands.map(command => command.data.toJSON());
+    return commandsAsJSON;
+}
+
