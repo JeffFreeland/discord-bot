@@ -4,15 +4,10 @@ const { Routes } = require('discord-api-types/v9');
 const { guildId } = require('./config.json');
 
 const logger = require("./logging.js");
+const { getCommandsFromDirAsJson } = require("./command-utils.js");
 
 function main() {
-	const commands = []
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-	for (const file of commandFiles) {
-		const command = require(`./commands/${file}`);
-		commands.push(command.data.toJSON());
-	}
+	const commands = getCommandsFromDirAsJson();
 
 	const CLIENT_ID = process.env.CLIENT_ID;
 	if(!CLIENT_ID){

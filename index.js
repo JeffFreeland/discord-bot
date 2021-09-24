@@ -1,16 +1,15 @@
 const fs = require("fs");
 const { Client, Collection, Intents } = require('discord.js');
 const logger = require("./logging.js");
-
+const { getCommandsFromDir } = require("./command-utils.js");
 
 function main() {
     // Create a new client instance
     const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-    client.commands = new Collection();
 
-    const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-    for (const file of commandFiles) {
-        const command = require(`./commands/${file}`);
+    client.commands = new Collection();
+    const commandsFromFiles = getCommandsFromDir();
+    for (const command of commandsFromFiles) {
         client.commands.set(command.data.name, command);
     }
 
