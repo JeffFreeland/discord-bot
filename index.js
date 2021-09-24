@@ -41,15 +41,3 @@ function main() {
 }
 
 main();
-
-
-
-/*
-        if (commandName === 'ping') {
-            await interaction.reply('Pong!');
-        } else if (commandName === 'server') {
-            await interaction.reply(`Server Name: ${interaction.guild.name}\nTotal Server Members: ${interaction.guild.memberCount}`);
-        } else if (commandName === 'user') {
-            await interaction.reply('User info.');
-        }
-*/
