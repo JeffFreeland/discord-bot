@@ -1,9 +1,7 @@
 const fs = require("fs");
 const { Client, Collection, Intents } = require('discord.js');
-const log4js = require("log4js");
+const logger = require("./logging.js");
 
-var logger = log4js.getLogger();
-logger.level = "info";
 
 function main() {
     // Create a new client instance
