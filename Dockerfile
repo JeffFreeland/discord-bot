@@ -1,13 +1,11 @@
-FROM python:3.9.6-alpine3.14
+FROM node:16-alpine3.14
 
 WORKDIR /app
 
-RUN apk update && apk add gcc musl-dev
+COPY package.json .
 
-COPY requirements.txt .
+RUN npm install
 
-RUN pip install -r requirements.txt
+COPY . .
 
-COPY main.py main.py
-
-CMD ["python", "main.py"]
+CMD ["node", "index.js"]

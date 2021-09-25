@@ -1,0 +1,30 @@
+{
+  "name": "discord-bot",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "deploy-commands": "node deploy-command.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffFreeland/discord-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeffFreeland/discord-bot/issues"
+  },
+  "homepage": "https://github.com/JeffFreeland/discord-bot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "log4js": "^6.3.0",
+    "node": "16.6.1"
+  }
+}
