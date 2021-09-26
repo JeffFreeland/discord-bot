@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { Random } = require("random-js");
 
 const IMAGE_URLS = [
     'https://i.imgur.com/YE6230n.jpg',
@@ -37,7 +38,9 @@ module.exports = {
             .setName('meme')
             .setDescription('A leftist meme for the working class'),
     async execute(interaction) {
-        const image = IMAGE_URLS[Math.floor(Math.random()*IMAGE_URLS.length)]
+        const random = new Random();
+        const image_index = random.integer(0, IMAGE_URLS.length-1);
+        const image = IMAGE_URLS[image_index];
         await interaction.reply(image);
     } 
 }
